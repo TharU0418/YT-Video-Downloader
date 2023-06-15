@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+.Home{
+    background-color: rgb(232, 86, 86);
+}
+.Home h2{
+    font-size: 40px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.Home .para{
+    width: 60%;
+    padding:50px;
+    margin: 0 auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.Home form{
+    margin: 0 auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.Home form .input-box{
+    width: 40%;
+    justify-content: center;
+    font-size: 24px;
+    height: 34px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+}
+.Home form button{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid red;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-left: 10px;
+    width: 200px;
+}
+.Home .yt-results{
+    background-color: rgb(111, 21, 16);
+    width: 60%;
+    padding: 10px;
+    margin: 0 auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.Home .yt-results h2{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}

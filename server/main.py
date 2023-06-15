@@ -31,6 +31,7 @@ def getLink():
     print("YouTube")
     link = request.get_json()
     usrLink = link["inputLink"]
+    #vquality = link['videoQuality']
     print('link', usrLink)
 
     vid_id = get_video_id(usrLink)
@@ -42,14 +43,49 @@ def getLink():
     thumbnail_url = get_video_img(vid_id)
     print(thumbnail_url)
 
-    download_video(usrLink)
+    
 
     # Add your logic to process the link here
 
     results = {'Vid_title': vid_title,
             'Thumbnail_url':thumbnail_url}
     
+    #download_video(usrLink,vquality)
+    
     return jsonify(results)
+
+@app.route("/data2", methods=['POST'])
+@cross_origin()
+def getLink2():
+    print("YouTube")
+    link = request.get_json()
+    usrLink = link["inputLink"]
+    vquality = link['videoQuality']
+    print('link', usrLink)
+
+    vid_id = get_video_id(usrLink)
+    print(vid_id)
+
+    vid_title = get_video_title(vid_id)
+    print(vid_title)
+
+    thumbnail_url = get_video_img(vid_id)
+    print(thumbnail_url)
+
+    
+
+    # Add your logic to process the link here
+
+    results = {'Vid_title': vid_title,
+            'Thumbnail_url':thumbnail_url}
+    
+    download_video(usrLink,vquality)
+
+    print("down")
+    
+    return jsonify(results)
+
+
 
 x = datetime.datetime.now()
 
@@ -109,13 +145,23 @@ def get_video_img(video_id):
     return  thumbnail_url
 
 
-def download_video(video_id):
+def download_video(video_id,vquality):
     ytObject = YouTube(video_id)
 
-    video = ytObject.streams.get_by_resolution("360p")
+    if vquality  == 'MP3':
+        video = ytObject.streams.get_audio_only()
+        video.download()
+        print("Downloaded 👍.")
 
-    video.download()
-    print("Downloaded.")
+    else :
+        streams = ytObject.streams.filter(res=vquality)
+
+        if streams:
+            video = streams[0]
+            video.download()
+            print("Downloaded 👍.")
+        else:
+            print("No Video.")
 
 if __name__ == "__main__":
     app.run(debug=True, port=os.getenv("PORT", default=5000))

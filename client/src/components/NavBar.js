@@ -4,10 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function NavBar() {
   return (
-    <div>
-        <Navbar bg="light" expand="lg">
+    <div className='NavBar'>
+        <Navbar bg="light" expand="lg" style={{backgroundColor:'white'}}>
             <Container fluid>
-            <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+            <Navbar.Brand href="/" style={{color:'red'}}>Next-Way</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
           <Nav
