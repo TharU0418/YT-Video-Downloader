@@ -63,18 +63,14 @@ function Home() {
             <h2>NextWay YouTube Video Downloader</h2>
             <div className='para'>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nibh massa, euismod quis nunc at, 
-                imperdiet aliquam tortor. Cras lectus odio, eleifend eget fringilla id, bibendum in risus. Quisque dictum 
-                neque at ex venenatis varius. Fusce in risus malesuada, pellentesque leo ornare, pellentesque purus. Nam laoreet 
-                mauris sed euismod faucibus. Maecenas justo dolor, vestibulum quis velit eget, aliquet semper est. Vestibulum 
-                iaculis gravida nulla non porta. Pellentesque fermentum, dolor et pretium placerat, eros nibh tempor nibh, et 
-                ultrices tellus arcu at nisi. Phasellus sed erat tempus, convallis purus sit amet, sollicitudin nisi. Curabitur 
-                eu pellentesque metus. Vestibulum eget tincidunt nisi.
+                NextWay is a YouTube Video Downloader. It allows you to effortlessly and freely download YouTube videos both MP4 and MP3.
+                Simply paste the video URL into the designated field then website display the video thumbnail. After that chose the video quality and click the 
+                Download button. For added convenience, we also provide a Chrome extension specifically designed for online video downloads.
             </p>
             </div>
             <form>
                 <input type='url' onChange={(e) => setLink(e.target.value)} className='input-box' placeholder='Paste Link Here' />
-                <button onClick={LoadDetails}>Load</button>
+                {/* <button onClick={LoadDetails}>Load</button> */}
             </form>
 
             <div className='yt-results'>

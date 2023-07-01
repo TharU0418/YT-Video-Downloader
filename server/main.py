@@ -29,11 +29,14 @@ print("YT API connected.")
 @app.route("/data", methods=['POST'])
 @cross_origin()
 def getLink():
+    #validelink(link)
     print("YouTube")
     link = request.get_json()
     usrLink = link["inputLink"]
     #vquality = link['videoQuality']
     print('link', usrLink)
+
+    
 
     vid_id = get_video_id(usrLink)
     print(vid_id)
@@ -60,9 +63,12 @@ def getLink():
 def getLink2():
     print("YouTube")
     link = request.get_json()
+    #validelink(link)
     usrLink = link["inputLink"]
     vquality = link['videoQuality']
     print('link', usrLink)
+
+    
 
     vid_id = get_video_id(usrLink)
     print(vid_id)
@@ -240,6 +246,31 @@ def download_video2(video_id):
 
     video.download()
     print("Downloaded.")     
+
+
+def validelink(input):
+
+    def valid_yt(url):
+        host_names = ("www.youtube.com", "youtube.com", "m.youtube.com", "youtu.be")
+        parsed_url = urlparse(url)
+
+        if parsed_url.hostname in host_names:
+
+            query_params = parse_qs(parsed_url.query)
+
+            if "v" in query_params:
+                return True
+            elif parsed_url.path.startswith("/embed"):
+                return True
+            return False
+        else:
+            return False
+        
+    if valid_yt(input):
+        return input
+    else:
+        return ("INVALID LINK")
+
 
 
 
